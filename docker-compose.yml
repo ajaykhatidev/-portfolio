@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio-prod
     ports:
-      - "40060:80"
+      - "80:80"
     restart: unless-stopped
 
   portfolio-dev:
