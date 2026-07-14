@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  portfolio-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-prod
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  portfolio-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: portfolio-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - WATCHPACK_POLLING=true # Useful for file-watching in Docker on some OSes
+    restart: unless-stopped
